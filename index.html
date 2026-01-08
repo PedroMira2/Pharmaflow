@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaFlow | Pharmaceutical Automation for the Digital Era</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --navy: #0a2463;
+            --teal: #00b4d8;
+            --cyan: #48cae4;
+            --light-blue: #caf0f8;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(10, 36, 99, 0.05) 0%, rgba(0, 180, 216, 0.05) 100%);
+        }
+        
+        .swot-card {
+            transition: all 0.3s ease;
+        }
+        
+        .swot-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .timeline-step {
+            position: relative;
+        }
+        
+        .timeline-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -25%;
+            width: 50%;
+            height: 2px;
+            background-color: var(--teal);
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-step:not(:last-child):after {
+                display: none;
+            }
+        }
+        
+        .btn-primary {
+            background-color: var(--teal);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0096c7;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--teal);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .value-card {
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        input:focus, textarea:focus {
+            border-color: var(--teal) !important;
+            box-shadow: 0 0 0 1px var(--teal) !important;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-2">
+                        <div class="h-10 w-10 rounded-full flex items-center justify-center" style="background-color: var(--navy);">
+                            <span class="text-white font-bold text-xl">PF</span>
+                        </div>
+                        <span class="text-2xl font-bold" style="color: var(--navy);">Pharma<span style="color: var(--teal);">Flow</span></span>
+                    </div>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#idea" class="nav-link font-medium">Ideia</a>
+                    <a href="#swot" class="nav-link font-medium">SWOT</a>
+                    <a href="#business" class="nav-link font-medium">Negócio</a>
+                    <a href="#contact" class="nav-link font-medium">Contacto</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
+                <div class="flex flex-col space-y-4">
+                    <a href="#idea" class="font-medium py-2 border-b border-gray-100">Ideia</a>
+                    <a href="#swot" class="font-medium py-2 border-b border-gray-100">SWOT</a>
+                    <a href="#business" class="font-medium py-2 border-b border-gray-100">Negócio</a>
+                    <a href="#contact" class="font-medium py-2">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6" style="color: var(--navy);">
+                        Automação Farmacêutica Expressa para a Era Digital
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        A sua saúde, entregue pelo futuro. Robótica de precisão e gestão inteligente para farmácias.
+                    </p>
+                    <a href="#contact" class="inline-block btn-primary text-white font-semibold py-3 px-8 rounded-lg">
+                        Implementar na Minha Farmácia
+                    </a>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="relative">
+                        <div class="bg-white rounded-2xl shadow-xl p-2">
+                            <div class="h-64 md:h-80 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);">
+                                <div class="text-center">
+                                    <div class="flex justify-center mb-4">
+                                        <div class="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center">
+                                            <i data-feather="cpu" class="text-white h-8 w-8"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-white text-xl font-semibold">PharmaFlow Automation Kiosk</h3>
+                                    <p class="text-white/80 mt-2">Robotic dispensing & smart shelf system</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 opacity-70"></div>
+                        <div class="absolute -bottom-4 -left-4 h-20 w-20 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400 opacity-70"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Idea/Problem Section -->
+    <section id="idea" class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--navy);">O Problema & A Nossa Solução</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">As filas nas farmácias e os erros de dispensação comprometem a experiência do cliente e a segurança do paciente.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right">
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4" style="background-color: rgba(239, 68, 68, 0.1);">
+                                <i data-feather="alert-triangle" class="h-6 w-6 text-red-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold" style="color: var(--navy);">Desafios Atuais</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i data-feather="clock" class="h-5 w-5 text-gray-500 mr-3 mt-1"></i>
+                                <span>Longos tempos de espera em horas de pico (15-25 minutos)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="alert-circle" class="h-5 w-5 text-gray-500 mr-3 mt-1"></i>
+                                <span>Erros de dispensação manual (1 em cada 20 prescrições)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="trending-down" class="h-5 w-5 text-gray-500 mr-3 mt-1"></i>
+                                <span>Ineficiência operacional e custos de pessoal elevados</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="users" class="h-5 w-5 text-gray-500 mr-3 mt-1"></i>
+                                <span>Experiência do cliente abaixo do esperado na era digital</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 border-t-4" style="border-color: var(--teal);">
+                        <div class="flex items-center mb-6">
+                            <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4" style="background-color: rgba(0, 180, 216, 0.1);">
+                                <i data-feather="check-circle" class="h-6 w-6" style="color: var(--teal);"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold" style="color: var(--navy);">Solução PharmaFlow</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i data-feather="zap" class="h-5 w-5 text-gray-500 mr-3 mt-1"></i>
+                                <span><strong>Sistema robótico de dispensação</strong> que reduz o tempo de espera para menos de 3 minutos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="shield" class="h-5 w-5 text-gray-500 mr-3 mt-1"></i>
+                                <span><strong>Protocolo de segurança "Zero Error"</strong> com verificação em múltiplas camadas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="smartphone" class="h-5 w-5 text-gray-500 mr-3 mt-1"></i>
+                                <span><strong>Integração completa com app web/mobile</strong> para reserva e levantamento simplificado</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="bar-chart-2" class="h-5 w-5 text-gray-500 mr-3 mt-1"></i>
+                                <span><strong>Painéis analíticos em tempo real</strong> para gestão de inventário e vendas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-16 md:py-24 gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--navy);">Como Funciona</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Um processo simplificado em 3 passos, com ênfase na segurança e eficiência.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- Step 1 -->
+                <div class="timeline-step md:w-1/3 text-center mb-12 md:mb-0" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-20 w-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: var(--navy);">
+                        <div class="h-16 w-16 rounded-full bg-white flex items-center justify-center">
+                            <i data-feather="smartphone" class="h-8 w-8" style="color: var(--navy);"></i>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-8 mx-4">
+                        <div class="text-2xl font-bold mb-2" style="color: var(--teal);">01</div>
+                        <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">Web App Order</h3>
+                        <p class="text-gray-600">Os clientes fazem o pedido através da app web ou mobile. A receita médica é carregada digitalmente para verificação.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="timeline-step md:w-1/3 text-center mb-12 md:mb-0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-20 w-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: var(--navy);">
+                        <div class="h-16 w-16 rounded-full bg-white flex items-center justify-center">
+                            <i data-feather="shield" class="h-8 w-8" style="color: var(--navy);"></i>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-8 mx-4">
+                        <div class="text-2xl font-bold mb-2" style="color: var(--teal);">02</div>
+                        <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">72h Prescription Validation</h3>
+                        <p class="text-gray-600">Nossa plataforma valida a prescrição com farmacêuticos certificados e sistemas de verificação automatizados.</p>
+                        <div class="mt-4 p-3 rounded-lg bg-blue-50">
+                            <span class="font-semibold" style="color: var(--teal);">Protocolo "Zero Error"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="timeline-step md:w-1/3 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-20 w-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: var(--navy);">
+                        <div class="h-16 w-16 rounded-full bg-white flex items-center justify-center">
+                            <i data-feather="package" class="h-8 w-8" style="color: var(--navy);"></i>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-8 mx-4">
+                        <div class="text-2xl font-bold mb-2" style="color: var(--teal);">03</div>
+                        <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">Robotic Delivery</h3>
+                        <p class="text-gray-600">O sistema robótico seleciona, embala e entrega a medicação em locker seguro ou balcão expresso em minutos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model & Value Prop -->
+    <section id="business" class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--navy);">Modelo de Negócio & Proposta de Valor</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Uma solução completa para farmácias que combina eficiência operacional com segurança máxima.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- B2B Clients -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 border-l-4" style="border-color: var(--navy);" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4" style="background-color: rgba(10, 36, 99, 0.1);">
+                            <i data-feather="briefcase" class="h-6 w-6" style="color: var(--navy);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold" style="color: var(--navy);">Clientes B2B</h3>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <i data-feather="check" class="h-5 w-5 text-green-500 mr-3"></i>
+                            <span>Farmácias independentes e cadeias</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="h-5 w-5 text-green-500 mr-3"></i>
+                            <span>Hospitais com farmácia interna</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="h-5 w-5 text-green-500 mr-3"></i>
+                            <span>Centros de saúde comunitários</span>
+                        </li>
+                    </ul>
+                    <div class="p-4 rounded-lg" style="background-color: rgba(10, 36, 99, 0.05);">
+                        <p class="text-sm"><strong>Modelo de subscrição:</strong> €299/mês por unidade + €0.50 por transação processada</p>
+                    </div>
+                </div>
+                
+                <!-- B2C Users -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 border-l-4" style="border-color: var(--teal);" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-6">
+                        <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4" style="background-color: rgba(0, 180, 216, 0.1);">
+                            <i data-feather="users" class="h-6 w-6" style="color: var(--teal);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold" style="color: var(--navy);">Utilizadores B2C</h3>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <i data-feather="user" class="h-5 w-5 text-gray-500 mr-3"></i>
+                            <span>Pacientes com medicação regular</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="user" class="h-5 w-5 text-gray-500 mr-3"></i>
+                            <span>Famílias com múltiplas prescrições</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="user" class="h-5 w-5 text-gray-500 mr-3"></i>
+                            <span>Profissionais com horários limitados</span>
+                        </li>
+                    </ul>
+                    <div class="p-4 rounded-lg" style="background-color: rgba(0, 180, 216, 0.05);">
+                        <p class="text-sm"><strong>App gratuita:</strong> Sem custos para os utilizadores finais, otimizando a experiência do cliente</p>
+                    </div>
+                </div>
+                
+                <!-- Value Proposition -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 border-l-4" style="border-color: #48cae4;" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4" style="background-color: rgba(72, 202, 228, 0.1);">
+                            <i data-feather="target" class="h-6 w-6" style="color: #48cae4;"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold" style="color: var(--navy);">Proposta de Valor Central</h3>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold mb-2" style="color: var(--navy);">Agilidade + Segurança</h4>
+                        <p class="text-gray-600">Reduzimos o tempo de espera em 85% enquanto garantimos precisão de 99.99% na dispensação de medicamentos.</p>
+                    </div>
+                    <div class="flex">
+                        <div class="w-1/2 pr-2">
+                            <div class="text-center p-4 rounded-lg border border-gray-200">
+                                <div class="text-2xl font-bold mb-1" style="color: var(--teal);">85%</div>
+                                <div class="text-sm text-gray-600">Redução de tempo</div>
+                            </div>
+                        </div>
+                        <div class="w-1/2 pl-2">
+                            <div class="text-center p-4 rounded-lg border border-gray-200">
+                                <div class="text-2xl font-bold mb-1" style="color: var(--teal);">99.99%</div>
+                                <div class="text-sm text-gray-600">Precisão</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Revenue Streams -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 border-l-4" style="border-color: var(--navy);" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-6">
+                        <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4" style="background-color: rgba(10, 36, 99, 0.1);">
+                            <i data-feather="dollar-sign" class="h-6 w-6" style="color: var(--navy);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold" style="color: var(--navy);">Fluxos de Receita</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="h-6 w-6 rounded-full flex items-center justify-center mr-3 mt-1" style="background-color: rgba(10, 36, 99, 0.1);">
+                                <span class="text-xs font-bold" style="color: var(--navy);">1</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Subscrições B2B mensais</p>
+                                <p class="text-sm text-gray-600">Modelo SaaS para farmácias</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="h-6 w-6 rounded-full flex items-center justify-center mr-3 mt-1" style="background-color: rgba(10, 36, 99, 0.1);">
+                                <span class="text-xs font-bold" style="color: var(--navy);">2</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Taxas de transação</p>
+                                <p class="text-sm text-gray-600">Por cada pedido processado</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="h-6 w-6 rounded-full flex items-center justify-center mr-3 mt-1" style="background-color: rgba(10, 36, 99, 0.1);">
+                                <span class="text-xs font-bold" style="color: var(--navy);">3</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Venda de dados anónimos</p>
+                                <p class="text-sm text-gray-600">Tendências de saúde para pesquisa</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SWOT Analysis -->
+    <section id="swot" class="py-16 md:py-24 gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--navy);">Análise SWOT</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Avaliação estratégica da posição da PharmaFlow no mercado de automação farmacêutica.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Strengths -->
+                <div class="swot-card bg-white rounded-2xl shadow-lg p-8" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4 bg-green-100">
+                            <i data-feather="thumbs-up" class="h-6 w-6 text-green-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-700">Pontos Fortes</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="h-5 w-5 text-green-500 mr-3 mt-1"></i>
+                            <span>Tecnologia proprietária de robótica de precisão</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="h-5 w-5 text-green-500 mr-3 mt-1"></i>
+                            <span>Equipa com experiência em saúde e tecnologia</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="h-5 w-5 text-green-500 mr-3 mt-1"></i>
+                            <span>Protocolo de segurança "Zero Error" patentado</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="h-5 w-5 text-green-500 mr-3 mt-1"></i>
+                            <span>Integração fácil com sistemas existentes</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Weaknesses -->
+                <div class="swot-card bg-white rounded-2xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-6">
+                        <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4 bg-yellow-100">
+                            <i data-feather="alert-octagon" class="h-6 w-6 text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-yellow-700">Fraquezas</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i data-feather="x" class="h-5 w-5 text-yellow-500 mr-3 mt-1"></i>
+                            <span>Dependência de componentes importados</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="x" class="h-5 w-5 text-yellow-500 mr-3 mt-1"></i>
+                            <span>Capital inicial limitado para expansão rápida</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="x" class="h-5 w-5 text-yellow-500 mr-3 mt-1"></i>
+                            <span>Marca ainda desconhecida no mercado</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="x" class="h-5 w-5 text-yellow-500 mr-3 mt-1"></i>
+                            <span>Necessidade de aprovações regulatórias por país</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Opportunities -->
+                <div class="swot-card bg-white rounded-2xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4 bg-blue-100">
+                            <i data-feather="trending-up" class="h-6 w-6 text-blue-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-700">Oportunidades</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i data-feather="plus" class="h-5 w-5 text-blue-500 mr-3 mt-1"></i>
+                            <span>Crescimento do mercado de telemedicina pós-pandemia</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="plus" class="h-5 w-5 text-blue-500 mr-3 mt-1"></i>
+                            <span>Envelhecimento da população e aumento de medicação crónica</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="plus" class="h-5 w-5 text-blue-500 mr-3 mt-1"></i>
+                            <span>Expansão para mercados internacionais com regulação semelhante</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="plus" class="h-5 w-5 text-blue-500 mr-3 mt-1"></i>
+                            <span>Parcerias com seguradoras e sistemas de saúde</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Threats -->
+                <div class="swot-card bg-white rounded-2xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-6">
+                        <div class="h-12 w-12 rounded-full flex items-center justify-center mr-4 bg-red-100">
+                            <i data-feather="shield-off" class="h-6 w-6 text-red-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-red-700">Ameaças</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i data-feather="minus" class="h-5 w-5 text-red-500 mr-3 mt-1"></i>
+                            <span>Concorrência de grandes players de tecnologia</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="minus" class="h-5 w-5 text-red-500 mr-3 mt-1"></i>
+                            <span>Mudanças regulatórias em mercados-chave</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="minus" class="h-5 w-5 text-red-500 mr-3 mt-1"></i>
+                            <span>Resistência à adoção de tecnologia por farmacêuticos tradicionais</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="minus" class="h-5 w-5 text-red-500 mr-3 mt-1"></i>
+                            <span>Ciberataques e preocupações com privacidade de dados</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--navy);">Missão, Visão & Valores</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Os princípios fundamentais que guiam a PharmaFlow na transformação da indústria farmacêutica.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Mission -->
+                <div class="text-center" data-aos="fade-up">
+                    <div class="h-20 w-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: rgba(10, 36, 99, 0.1);">
+                        <i data-feather="target" class="h-10 w-10" style="color: var(--navy);"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Missão</h3>
+                    <p class="text-gray-600">Transformar a experiência farmacêutica através de automação inteligente, garantindo acesso rápido, seguro e preciso a medicamentos para todos.</p>
+                </div>
+                
+                <!-- Vision -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-20 w-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: rgba(0, 180, 216, 0.1);">
+                        <i data-feather="eye" class="h-10 w-10" style="color: var(--teal);"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Visão</h3>
+                    <p class="text-gray-600">Ser o padrão global em automação farmacêutica, presente em 50 países até 2030, redefinindo a relação entre pacientes, farmacêuticos e tecnologia.</p>
+                </div>
+                
+                <!-- Values -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-20 w-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: rgba(72, 202, 228, 0.1);">
+                        <i data-feather="heart" class="h-10 w-10" style="color: #48cae4;"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Valores</h3>
+                    <p class="text-gray-600">Precisão, Segurança, Inovação, Acessibilidade e Colaboração guiam cada decisão e desenvolvimento na PharmaFlow.</p>
+                </div>
+            </div>
+            
+            <!-- Value Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="value-card bg-white rounded-xl shadow-lg p-6 text-center" data-aos="fade-up">
+                    <div class="h-14 w-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: rgba(10, 36, 99, 0.1);">
+                        <i data-feather="check-circle" class="h-7 w-7" style="color: var(--navy);"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" style="color: var(--navy);">Precisão</h4>
+                    <p class="text-sm text-gray-600">Compromisso com zero erros na dispensação de medicamentos.</p>
+                </div>
+                
+                <div class="value-card bg-white rounded-xl shadow-lg p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-14 w-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: rgba(0, 180, 216, 0.1);">
+                        <i data-feather="shield" class="h-7 w-7" style="color: var(--teal);"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" style="color: var(--navy);">Segurança</h4>
+                    <p class="text-sm text-gray-600">Proteção de dados e conformidade com todas as regulamentações.</p>
+                </div>
+                
+                <div class="value-card bg-white rounded-xl shadow-lg p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-14 w-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: rgba(72, 202, 228, 0.1);">
+                        <i data-feather="zap" class="h-7 w-7" style="color: #48cae4;"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" style="color: var(--navy);">Inovação</h4>
+                    <p class="text-sm text-gray-600">Desenvolvimento contínuo de soluções tecnológicas avançadas.</p>
+                </div>
+                
+                <div class="value-card bg-white rounded-xl shadow-lg p-6 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-14 w-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: rgba(10, 36, 99, 0.1);">
+                        <i data-feather="users" class="h-7 w-7" style="color: var(--navy);"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" style="color: var(--navy);">Colaboração</h4>
+                    <p class="text-sm text-gray-600">Parcerias com profissionais de saúde para soluções integradas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="pt-16 pb-8" style="background-color: var(--navy);">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row justify-between">
+                <!-- Contact Form -->
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h3 class="text-2xl font-bold mb-6 text-white">Contacte-nos</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-white mb-2">Nome Completo</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-white mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="company" class="block text-white mb-2">Empresa</label>
+                            <input type="text" id="company" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-white mb-2">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary text-white font-semibold py-3 px-8 rounded-lg">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info & Investment Data -->
+                <div class="lg:w-1/2 lg:pl-12">
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Informações de Contacto</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i data-feather="mail" class="h-5 w-5 text-white mr-4 mt-1"></i>
+                                <span class="text-white">info@pharmaflow.pt</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="phone" class="h-5 w-5 text-white mr-4 mt-1"></i>
+                                <span class="text-white">+351 210 123 456</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="map-pin" class="h-5 w-5 text-white mr-4 mt-1"></i>
+                                <span class="text-white">Lisbon Tech Park, Edifício Inovação, 1990-123 Lisboa</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Investment & Market Data -->
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                        <h4 class="text-xl font-bold mb-4 text-white">Investimento & Dados de Mercado</h4>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center pb-3 border-b border-white/20">
+                                <span class="text-white">Investimento Inicial Total</span>
+                                <span class="text-xl font-bold" style="color: var(--teal);">€13.500</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b border-white/20">
+                                <span class="text-white">Mercado Global de Automação Farmacêutica (2032)</span>
+                                <span class="text-xl font-bold" style="color: var(--teal);">$15.8B</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white">CAGR (2023-2032)</span>
+                                <span class="text-xl font-bold" style="color: var(--teal);">8.7%</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-white/20">
+                            <p class="text-white/80 text-sm">* Dados baseados em relatórios de mercado da Global Market Insights e análise interna da PharmaFlow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="mt-16 pt-8 border-t border-white/20 text-center">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <div class="flex items-center space-x-2 justify-center md:justify-start">
+                            <div class="h-8 w-8 rounded-full flex items-center justify-center" style="background-color: var(--teal);">
+                                <span class="text-white font-bold text-sm">PF</span>
+                            </div>
+                            <span class="text-xl font-bold text-white">Pharma<span style="color: var(--teal);">Flow</span></span>
+                        </div>
+                    </div>
+                    <div class="text-white/70 text-sm">
+                        <p>&copy; 2026 PharmaFlow. Todos os direitos reservados. | Startup de Saúde-Tecnológica Registada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Main Script -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+        
+        // Initialize Feather Icons
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                
+                // Change icon based on menu state
+                const icon = mobileMenuButton.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    feather.replace();
+                } else {
+                    icon.setAttribute('data-feather', 'x');
+                    feather.replace();
+                }
+            });
+            
+            // Close mobile menu when clicking a link
+            const mobileLinks = document.querySelectorAll('#mobile-menu a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    icon.setAttribute('data-feather', 'menu');
+                    feather.replace();
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const company = document.getElementById('company').value;
+                const message = document.getElementById('message').value;
+                
+                // In a real application, you would send this data to a server
+                // For demo purposes, we'll just show an alert
+                alert(`Obrigado, ${name}! Sua mensagem foi enviada. Entraremos em contato em breve.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
